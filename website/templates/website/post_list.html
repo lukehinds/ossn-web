@@ -11,18 +11,20 @@
             <h1><a href="/">OpenStack Security Notes</a></h1>
         </div>
         <div style="overflow-x:auto;">
-        <th>OSSN</th>
         <table style="width:100%">
+        <tr class="header">
+        <tr style="background-color:#0084b4;color:white;">
+            <th>OSSN</th>
+            <th>Title</th>
+            <th>Summary</th>
+            <th>Published</th>
+        </tr>
         {% for post in posts %}
             <tr>
                 <td><a href="{% url 'post_ossn' pk=post.pk %}">{{ post.ossn }}</a></td>
                 <td><p>{{ post.title}}</p></td>
-                <td><p>{{ post.summary}}</p></td>
-                <td><p>{{ post.releases}}</p></td>
-                <td><p>{{ post.discussion}}</p></td>
-                <td><p>{{ post.actions}}</p></td>
-                <td><p>{{ post.contact}}</p></td>
-                <td><p>{{ post.references }}</p></td>
+                <td><p>{{ post.summary|truncatechars:50}}</p></td>
+                <td><p>{{ post.published_date }}</p></td>
             </tr>
         </div>
         {% endfor %}
