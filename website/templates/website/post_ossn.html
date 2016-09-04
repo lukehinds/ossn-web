@@ -1,0 +1,24 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <title>OpenStack Security Notes</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/website.css' %}">
+    </head>
+    <body>
+        <div class="post">
+            <h1>{{ post.ossn }}</h1>
+            <h2>{{ post.title }}</h2>
+            <h3>Summary</h3>
+            <p>{{ post.summary|linebreaksbr }}</p>
+            <h3>Discussions</h3>
+            <p>{{ post.discussion|linebreaksbr }}</p>
+            <h3>Recommended Actions</h3>
+            <p>{{ post.actions|linebreaksbr }}</p>
+            <h3>Contacts / References</h3>
+            <p>{{ post.contact|linebreaksbr }}</p>
+            <p>{{ post.references|linebreaksbr }}</p>
+        </div>
+    </body>
+</html>

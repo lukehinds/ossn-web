@@ -1,0 +1,30 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <title>OpenStack Security Notes</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/website.css' %}">
+    </head>
+    <body>
+        <div>
+            <h1><a href="/">OpenStack Security Notes</a></h1>
+        </div>
+        <div style="overflow-x:auto;">
+        <th>OSSN</th>
+        <table style="width:100%">
+        {% for post in posts %}
+            <tr>
+                <td><a href="{% url 'post_ossn' pk=post.pk %}">{{ post.ossn }}</a></td>
+                <td><p>{{ post.title}}</p></td>
+                <td><p>{{ post.summary}}</p></td>
+                <td><p>{{ post.releases}}</p></td>
+                <td><p>{{ post.discussion}}</p></td>
+                <td><p>{{ post.actions}}</p></td>
+                <td><p>{{ post.contact}}</p></td>
+                <td><p>{{ post.references }}</p></td>
+            </tr>
+        </div>
+        {% endfor %}
+    </body>
+</html>
