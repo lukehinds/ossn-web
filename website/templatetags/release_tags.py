@@ -7,7 +7,7 @@ register = template.Library()
 
 def decode_release(ingredients):
     """
-    Decode pizza pie toppings
+    Decode release dict
     """
     decoder = dict(Post.RELEASE_CHOICES)
     decoded = [decoder[t] for t in ingredients]

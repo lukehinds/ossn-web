@@ -11,7 +11,7 @@
             <h3>Discussions</h3>
             <p>{{ post.discussion|linebreaksbr }}</p>
             <h3>Recommended Actions</h3>
-            <p>{{ post.actions|linebreaksbr }}</p>
+            <p>{{ post.actions|safe|linebreaksbr }}</p>
             <h3>Contacts / References</h3>
             <p>{{ post.contact|linebreaksbr }}</p>
             <p>{{ post.references|linebreaksbr }}</p>
