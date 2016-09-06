@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post, Release
+from .models import Post
 
 
 class PostForm(forms.ModelForm):
@@ -8,7 +8,7 @@ class PostForm(forms.ModelForm):
         model = Post
         fields = ('ossn',
                   'title',
-                  'release',
+                  'releases',
                   'discussion',
                   'summary',
                   'actions',

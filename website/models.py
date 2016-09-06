@@ -1,15 +1,29 @@
+from __future__ import unicode_literals
 from django.db import models
 from django.utils import timezone
-
-
-class Release(models.Model):
-    release_names = models.CharField(max_length=10)
+from django.core.urlresolvers import reverse
+from django.utils.encoding import (
+    force_text, python_2_unicode_compatible)
+from django.utils.translation import ugettext_lazy as _
+from select_multiple_field.models import SelectMultipleField
 
 
 class Post(models.Model):
+    JUNO = 'a'
+    KILO = 'b'
+    LIBERTY = 'p'
+    RELEASE_CHOICES = (
+        (JUNO, 'Juno'),
+        (KILO, 'Kilo'),
+        (LIBERTY, 'Liberty'),
+    )
+    releases = SelectMultipleField(
+        max_length=10,
+        choices=RELEASE_CHOICES,
+        default='a'
+    )
     author = models.ForeignKey('auth.User')
     ossn = models.CharField(max_length=10)
-    release = models.ManyToManyField(Release, blank=True)
     title = models.CharField(max_length=200)
     discussion = models.TextField()
     summary = models.TextField()
@@ -25,3 +39,21 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+        return "pk=%s" % force_text(self.pk)
+
+    def get_releases(self):
+        if self.releases:
+            keys_choices = self.toppings
+            return '%s' % (', '.join(filter(bool, keys_choices)))
+    get_releases.short_description = _('Releases')
+
+    def get_absolute_url(self):
+        return reverse('Post:detail', args=[self.pk])
+
+
+def show_release(ingredient):
+    """
+    Decode release to full name
+    """
+    decoder = dict(Post.RELEASE_CHOICES)
+    return force_text(decoder[ingredient])
