@@ -2,9 +2,14 @@ from django.db import models
 from django.utils import timezone
 
 
+class Release(models.Model):
+    release_names = models.CharField(max_length=10)
+
+
 class Post(models.Model):
     author = models.ForeignKey('auth.User')
     ossn = models.CharField(max_length=10)
+    release = models.ManyToManyField(Release, blank=True)
     title = models.CharField(max_length=200)
     discussion = models.TextField()
     summary = models.TextField()
