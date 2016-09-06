@@ -6,7 +6,6 @@ class Post(models.Model):
     author = models.ForeignKey('auth.User')
     ossn = models.CharField(max_length=10)
     title = models.CharField(max_length=200)
-    releases = models.CharField(max_length=200)
     discussion = models.TextField()
     summary = models.TextField()
     actions = models.TextField()

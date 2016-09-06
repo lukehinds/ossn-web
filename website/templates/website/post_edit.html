@@ -1,9 +1,40 @@
 {% extends 'website/base.html' %}
-
 {% block content %}
-    <h1>New OSSN</h1>
+    <h2>OSSN</h2>
     <form method="POST" class="post-form">{% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Save</button>
+        {% if form %}
+            <!-- Form Errors -->
+            {% if form.errors %}
+                <ul class="errors">
+                    {% for error in form.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <!-- Display Form -->
+            <form>
+            {% csrf_token %}
+            <div>{{ form.release}} </div>
+            {% for field in form %}
+                <div class="mydiv">
+                    <label class="mylabel">{{ field.label }}</label>
+                    <p> {{ field }} </p>
+                </div>
+            {% endfor %}
+            <button type="submit" class="save btn btn-default">Save</button>
+            </form>
+        {% endif %}
     </form>
 {% endblock %}
+
+
+<!--
+<!-- <div>{{ form.ossn}} </div>
+<div>{{ form.title}} </div>
+<div>{{ form.discussion}} </div>
+<div>{{ form.summary}} </div>
+<div>{{ form.actions}} </div>
+<div>{{ form.contact}} </div>
+<div>{{ form.reference}} </div>
+-->

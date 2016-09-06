@@ -6,4 +6,11 @@ class PostForm(forms.ModelForm):
 
     class Meta:
         model = Post
-        fields = ('ossn', 'title', 'discussion', 'summary', 'actions', 'contact', 'references')
+        fields = ('ossn',
+                  'title',
+                  'discussion',
+                  'summary',
+                  'actions',
+                  'contact',
+                  'references'
+                  )
