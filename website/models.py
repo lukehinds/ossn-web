@@ -9,18 +9,18 @@ from select_multiple_field.models import SelectMultipleField
 
 
 class Post(models.Model):
-    JUNO = 'a'
-    KILO = 'b'
-    LIBERTY = 'p'
+    JUNO = 'juno'
+    KILO = 'kilo'
+    LIBERTY = 'liberty'
     RELEASE_CHOICES = (
         (JUNO, 'Juno'),
         (KILO, 'Kilo'),
         (LIBERTY, 'Liberty'),
     )
     releases = SelectMultipleField(
-        max_length=10,
+        max_length=50,
         choices=RELEASE_CHOICES,
-        default='a'
+        default='liberty'
     )
     author = models.ForeignKey('auth.User')
     ossn = models.CharField(max_length=10)
