@@ -9,7 +9,7 @@
             <h3>Releases</h3>
             <p>{{ post.releases|decode_release }}</p>
             <h3>Discussions</h3>
-            <p>{{ post.discussion|linebreaksbr }}</p>
+            <p>{{ post.discussion|safe|linebreaksbr }}</p>
             <h3>Recommended Actions</h3>
             <p>{{ post.actions|safe|linebreaks }}</p>
             <h3>Contacts / References</h3>
