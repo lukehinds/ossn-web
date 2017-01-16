@@ -3,7 +3,7 @@ from django.db import models
 from django.utils import timezone
 from django.core.urlresolvers import reverse
 from django.utils.encoding import (
-    force_text, python_2_unicode_compatible)
+     force_text, python_2_unicode_compatible)
 from django.utils.translation import ugettext_lazy as _
 from select_multiple_field.models import SelectMultipleField
 
@@ -15,18 +15,19 @@ class Post(models.Model):
     LIBERTY = 'liberty'
     MITAKA = 'mitaka'
     NEWTON = 'newton'
+    OCATA = 'ocata'
     RELEASE_CHOICES = (
         (ICEHOUSE, 'Icehouse'),
         (JUNO, 'Juno'),
         (KILO, 'Kilo'),
         (LIBERTY, 'Liberty'),
         (MITAKA, 'Mitaka'),
-        (NEWTON, 'Newton'),
+        (OCATA, 'Ocata'),
     )
     releases = SelectMultipleField(
         max_length=50,
         choices=RELEASE_CHOICES,
-        default='newton'
+        default='ocata'
     )
     author = models.ForeignKey('auth.User')
     ossn = models.CharField(max_length=10)
