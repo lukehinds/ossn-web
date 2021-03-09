@@ -2,5 +2,5 @@ Cython==0.24.1
 Django==1.8.14
 django-select-multiple-field==0.4.2
 djangorestframework==3.4.7
-mistune==0.7.3
+mistune==0.8.1
 Pygments==2.1.3
